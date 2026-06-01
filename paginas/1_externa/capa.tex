@@ -6,33 +6,33 @@
   \begin{center}
     
     % 1. INSTITUIÇÃO (Caixa Alta)
-    {\large\bfseries\MakeUppercase{\minhainstituicao}} \\
+    {\bfseries\MakeUppercase{\minhainstituicao}} \\
     \ifdefempty{\meudepartamento}{}{%
-      {\large\MakeUppercase{\meudepartamento}} \\
+      {\MakeUppercase{\meudepartamento}} \\
     }
-    {\large\MakeUppercase{\meucurso}}
+    {\MakeUppercase{\meucurso}}
     
     \vspace{4cm} % Espaço vertical proporcional
     
     % 2. AUTOR (Caixa Alta, sem negrito)
-    {\large\MakeUppercase{\meuautor}}
+    {\MakeUppercase{\meuautor}}
     
     \vfill % Distribuição vertical flexível
     
     % 3. TÍTULO (Caixa Alta e Negrito)
-    {\LARGE\bfseries\MakeUppercase{\meutitulo}}
+    {\bfseries\MakeUppercase{\meutitulo}}
     
     % Subtítulo (se houver, em caixa baixa/normal)
     \ifdefempty{\meusubtitulo}{}{%
       \vspace{0.5cm}
-      {\large\meusubtitulo} \\
+      {\meusubtitulo} \\
     }
     
     \vfill
     
     % 4. LOCAL E ANO (No rodapé)
-    {\large\meulocal} \\
-    {\large\meuano}
+    {\meulocal} \\
+    {\meuano}
     
   \end{center}
 \end{titlepage}
