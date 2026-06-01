@@ -1,0 +1,38 @@
+%% paginas/1_externa/capa.tex
+%% Elemento Externo Obrigatório (Capa) -- Conforme ABNT NBR 14724
+
+\begin{titlepage}
+  \thispagestyle{empty} % Sem cabeçalho ou número de página
+  \begin{center}
+    
+    % 1. INSTITUIÇÃO (Caixa Alta)
+    {\large\bfseries\MakeUppercase{\minhainstituicao}} \\
+    \ifdefempty{\meudepartamento}{}{%
+      {\large\MakeUppercase{\meudepartamento}} \\
+    }
+    {\large\MakeUppercase{\meucurso}}
+    
+    \vspace{4cm} % Espaço vertical proporcional
+    
+    % 2. AUTOR (Caixa Alta, sem negrito)
+    {\large\MakeUppercase{\meuautor}}
+    
+    \vfill % Distribuição vertical flexível
+    
+    % 3. TÍTULO (Caixa Alta e Negrito)
+    {\LARGE\bfseries\MakeUppercase{\meutitulo}}
+    
+    % Subtítulo (se houver, em caixa baixa/normal)
+    \ifdefempty{\meusubtitulo}{}{%
+      \vspace{0.5cm}
+      {\large\meusubtitulo} \\
+    }
+    
+    \vfill
+    
+    % 4. LOCAL E ANO (No rodapé)
+    {\large\meulocal} \\
+    {\large\meuano}
+    
+  \end{center}
+\end{titlepage}

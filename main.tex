@@ -1,0 +1,119 @@
+%% main.tex
+%% Arquivo principal (coordenador) do Modelo ABNT Modular LaTeX
+%% Desenvolvido por Antigravity para Lean L.
+%% Este arquivo importa os estilos, metadados e as páginas de forma organizada.
+
+\documentclass[12pt, a4paper]{report} % Classe padrão de relatórios, ideal para trabalhos acadêmicos
+
+% ==============================================================================
+% 1. CARREGAMENTO DE CONFIGURAÇÕES E METADADOS
+% ==============================================================================
+\usepackage{styles}         % Carrega a folha de estilos ABNT (styles.sty)
+\input{metadata.tex}        % Carrega as variáveis com dados do trabalho (metadata.tex)
+
+% ==============================================================================
+% 2. INÍCIO DO DOCUMENTO
+% ==============================================================================
+\begin{document}
+
+% ------------------------------------------------------------------------------
+% A) ELEMENTOS PRÉ-TEXTUAIS (Páginas contadas, mas não numeradas visualmente)
+% ------------------------------------------------------------------------------
+\configurarpretextual       % Oculta os números de página no cabeçalho
+
+% 1. Capa (Obrigatório)
+\input{paginas/1_externa/capa.tex}
+
+% Reinicia a contagem de páginas para que a Folha de Rosto seja a página 1 (contada)
+\clearpage
+\setcounter{page}{1}
+
+% 2. Folha de Rosto (Obrigatório)
+\input{paginas/2_pre_textuais/folha_rosto.tex}
+
+% 3. Errata (Opcional - Ative se houver correções)
+% \input{paginas/2_pre_textuais/errata.tex}
+
+% 4. Folha de Aprovação (Obrigatório)
+\input{paginas/2_pre_textuais/aprovacao.tex}
+
+% 5. Dedicatória (Opcional)
+\input{paginas/2_pre_textuais/dedicatoria.tex}
+
+% 6. Agradecimentos (Opcional)
+\input{paginas/2_pre_textuais/agradecimentos.tex}
+
+% 7. Epígrafe (Opcional)
+\input{paginas/2_pre_textuais/epigrafe.tex}
+
+% 8. Resumo em Português (Obrigatório)
+\input{paginas/2_pre_textuais/resumo.tex}
+
+% 9. Abstract/Resumo em Inglês (Obrigatório)
+\input{paginas/2_pre_textuais/abstract.tex}
+
+% 10. Lista de Ilustrações / Figuras (Opcional)
+\clearpage
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures
+
+% 11. Lista de Tabelas (Opcional)
+\clearpage
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables
+
+% 12. Lista de Abreviaturas e Siglas (Opcional)
+\input{paginas/2_pre_textuais/siglas.tex}
+
+% 13. Lista de Símbolos (Opcional)
+% \input{paginas/2_pre_textuais/simbolos.tex}
+
+% 14. Sumário (Obrigatório, marca o fim da parte pré-textual)
+\clearpage
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents
+
+% ------------------------------------------------------------------------------
+% B) ELEMENTOS TEXTUAIS (Início da numeração visual no canto superior direito)
+% ------------------------------------------------------------------------------
+\clearpage
+\configurartextual          % Exibe os números das páginas a partir daqui
+
+% 1. Introdução (Obrigatório)
+\input{paginas/3_textuais/introducao.tex}
+
+% 2. Desenvolvimento (Obrigatório)
+\input{paginas/3_textuais/desenvolvimento.tex}
+
+% 3. Conclusão (Obrigatório)
+\input{paginas/3_textuais/conclusao.tex}
+
+% ------------------------------------------------------------------------------
+% C) ELEMENTOS PÓS-TEXTUAIS (Referências, Apêndices, Anexos, etc.)
+% ------------------------------------------------------------------------------
+\clearpage
+
+% 1. Referências Bibliográficas (Obrigatório - Gerido por BibTeX)
+% Adiciona ao Sumário de forma limpa
+\phantomsection
+\addcontentsline{toc}{chapter}{REFERÊNCIAS}
+\bibliographystyle{abntex2-alf} % Estilo de referências ABNT clássico
+\bibliography{referencias.bib}  % Importa o arquivo de banco de dados referencias.bib
+
+% 2. Glossário (Opcional)
+% \input{paginas/4_pos_textuais/glossario.tex}
+
+% 3. Apêndices (Opcional)
+\ifdef{\appendix}{
+  \clearpage
+  \appendix
+  \input{paginas/4_pos_textuais/apendices.tex}
+}{}
+
+% 4. Anexos (Opcional)
+% \input{paginas/4_pos_textuais/anexos.tex}
+
+% 5. Índice Remissivo (Opcional)
+% \input{paginas/4_pos_textuais/indice.tex}
+
+\end{document}

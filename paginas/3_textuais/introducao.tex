@@ -1,0 +1,26 @@
+%% paginas/3_textuais/introducao.tex
+%% Elemento Textual Obrigatório (Introdução) -- Conforme ABNT NBR 14724 & NBR 6024
+
+\chapter{Introdução}
+
+A introdução constitui a parte inicial do trabalho acadêmico, cuja finalidade principal é situar o leitor a respeito do assunto a ser abordado. Nela, o autor deve apresentar a delimitação do tema, o problema de pesquisa, os objetivos (geral e específicos), a justificativa da relevância do estudo e uma breve descrição da estrutura do restante do documento.
+
+Como este modelo LaTeX é modular, a pasta \texttt{paginas/3\_textuais/} é especificamente reservada para o desenvolvimento do conteúdo principal da pesquisa (introdução, fundamentação teórica, metodologia, resultados e discussão, etc.). A paginação visível se inicia exatamente nesta folha, conforme exigido pelas diretrizes da NBR 14724, com o número da página impresso no canto superior direito.
+
+\section{Problema de Pesquisa}
+
+Mapear e formatar trabalhos acadêmicos manualmente segundo as regras da Associação Brasileira de Normas Técnicas (ABNT) constitui uma das tarefas mais exaustivas e sujeitas a erros de formatação enfrentadas por pesquisadores e estudantes no final de seus cursos. O desafio está na descentralização e no acoplamento rígido entre o conteúdo textual e as regras de design que muitos editores de texto tradicionais impõem. 
+
+\section{Objetivos}
+
+Com o intuito de solucionar o problema da formatação manual e do acoplamento rígido de arquivos, este projeto estabelece os seguintes objetivos:
+
+\subsection{Objetivo Geral}
+Desenvolver um modelo de documento LaTeX altamente modular e parametrizado que isole totalmente as regras visuais ABNT em uma folha de estilos dedicada (\texttt{styles.sty}) e centralize os metadados do autor e da obra em um arquivo de variáveis (\texttt{metadata.tex}).
+
+\subsection{Objetivos Específicos}
+\begin{itemize}
+  \item Segmentar as partes do documento em diretórios pré-textuais, textuais e pós-textuais.
+  \item Mapear todas as regras pertinentes (margens, fontes, parágrafos, sumário, citações e referências) documentando-as com comentários associados às normas NBR vigentes.
+  \item Oferecer um ponto de partida robusto para estudantes e pesquisadores utilizarem na ferramenta Overleaf.
+\end{itemize}

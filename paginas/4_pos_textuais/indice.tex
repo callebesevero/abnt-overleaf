@@ -1,0 +1,26 @@
+%% paginas/4_pos_textuais/indice.tex
+%% Elemento Pós-Textual Opcional (Índice Remissivo) -- Conforme ABNT NBR 6034
+%% NOTA: Exige a inclusão do pacote \usepackage{makeidx} no preâmbulo
+%% e a execução de \makeindex no preâmbulo e \printindex no corpo.
+
+\chapter*{Índice Remissivo}
+\addcontentsline{toc}{chapter}{ÍNDICE REMISSIVO}
+
+Este arquivo constitui um modelo e guia para a criação do Índice Remissivo acadêmico. No LaTeX, a geração do índice remissivo é automatizada através do utilitário \texttt{makeidx}.
+
+\section*{Como configurar e utilizar o Índice Remissivo no LaTeX:}
+
+\begin{enumerate}
+  \item No seu arquivo principal (\texttt{main.tex}), ative o pacote de suporte adicionando \texttt{\textbackslash usepackage\{makeidx\}} no preâmbulo.
+  \item Logo abaixo do carregamento do pacote, ative a inicialização do índice escrevendo \texttt{\textbackslash makeindex}.
+  \item Ao longo do seu texto principal (\texttt{introducao.tex}, \texttt{desenvolvimento.tex}, etc.), marque as palavras que devem ir para o índice usando o comando \texttt{\textbackslash index\{termo\}}. Por exemplo: \\
+        \texttt{O uso do sistema \textbackslash index\{LaTeX\}LaTeX otimiza a escrita...}
+  \item No local onde deseja imprimir o índice remissivo final (onde este arquivo está incluído), use o comando: \\
+        \texttt{\textbackslash printindex}
+\end{enumerate}
+
+\vspace{1cm}
+\begin{center}
+  \small
+  \textit{Dica: O Overleaf compila os índices remissivos automaticamente em múltiplos passos, garantindo que os números de páginas e termos estejam perfeitamente sincronizados.}
+\end{center}

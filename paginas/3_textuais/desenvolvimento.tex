@@ -1,0 +1,108 @@
+%% paginas/3_textuais/desenvolvimento.tex
+%% Elemento Textual Obrigatório (Desenvolvimento) -- Conforme ABNT NBR 14724 & NBR 6024
+%% Inclui demonstração de Citações Longas, Figuras, e Tabelas no padrão IBGE.
+
+\chapter{Desenvolvimento e Fundamentação}
+
+O desenvolvimento é a parte principal do texto, que contém a exposição ordenada e detalhada do assunto tratado. Divide-se em seções e subseções, que variam em função da abordagem do tema e do método de pesquisa adotado.
+
+Nesta seção de demonstração, apresentamos a aplicação prática de cada elemento estilístico do nosso pacote \texttt{styles.sty}, garantindo a conformidade visual e técnica exigida pelas diretrizes acadêmicas.
+
+% ==============================================================================
+% DEMONSTRAÇÃO DE HIERARQUIA DE TÍTULOS (NBR 6024)
+% ==============================================================================
+\section{Seção Secundária (Exemplo de Caixa Alta sem Negrito)}
+
+Esta seção demonstra o comportamento da Seção Secundária (nível 2 de cabeçalho). De acordo com a NBR 6024 e o estilo configurado, este título é impresso em caixa alta e sem negrito, mantendo o tamanho 12 padrão do documento.
+
+\subsection{Seção Terciária (Exemplo de Caixa Baixa e Negrito)}
+
+As seções terciárias (nível 3) devem ser escritas com a primeira letra maiúscula e o restante em caixa baixa, possuindo como distinção visual o negrito. Note que o LaTeX aplica essa formatação de forma totalmente automática.
+
+\subsubsection{Seção Quaternária (Exemplo de Caixa Baixa e Itálico)}
+
+As seções quaternárias (nível 4) utilizam o itálico como diferencial tipográfico. Recomenda-se evitar o excesso de subdivisões para não fragmentar demasiadamente o texto, limitando as seções ao nível quinário.
+
+\paragraph{Seção Quinzenária (Exemplo de Caixa Baixa e Normal)}
+
+A seção quinzenária (nível 5) encerra a subdivisão progressiva padrão das normas. Ela não apresenta destaques como negrito ou itálico, utilizando fonte normal em caixa baixa.
+
+% ==============================================================================
+% DEMONSTRAÇÃO DE CITAÇÃO DIRETA LONGA (NBR 10520)
+% ==============================================================================
+\section{Citações Diretas Longas}
+
+As citações diretas curtas (com até três linhas) são inseridas no próprio parágrafo, delimitadas por aspas duplas. Já as citações diretas longas (com mais de três linhas) devem ser destacadas do texto principal, conforme exemplificado a seguir:
+
+\begin{citacaolonga}
+A citação direta longa constitui a transcrição literal de trechos de uma obra, contendo mais de três linhas contínuas. Ela deve ser apresentada em parágrafo exclusivo, com recuo de exatos 4 cm a partir da margem esquerda do documento, possuindo espaçamento simples entre as linhas e fonte de tamanho reduzido (geralmente de tamanho 10, o correspondente ao comando \texttt{\textbackslash small}). Não são utilizadas aspas em citações de bloco recuado. (NBR 10520, 2023).
+\end{citacaolonga}
+
+Note que o espaçamento do parágrafo seguinte retorna ao padrão de 1,5 entrelinhas de forma automatizada, mantendo a harmonia visual das páginas do trabalho.
+
+% ==============================================================================
+% DEMONSTRAÇÃO DE FIGURAS (NBR 14724)
+% ==============================================================================
+\section{Ilustrações e Legendas}
+
+Qualquer elemento ilustrativo (desenhos, esquemas, fluxogramas, fotografias, gráficos, mapas, organogramas) deve ser identificado no topo através do tipo, número de ordem de ocorrência no texto (algarismos arábicos) e do respectivo título. Na parte inferior, deve-se citar a fonte da informação.
+
+A Figura \ref{fig:exemplo_estrutura} ilustra a arquitetura modular das pastas implementadas neste ecossistema.
+
+\begin{figure}[h!]
+  \centering
+  % Título da figura (Legenda) no topo
+  \caption{Representação Hierárquica da Modularização de Pastas}
+  \label{fig:exemplo_estrutura}
+  
+  % Esqueleto conceitual de imagem desenhado com caracteres de bloco / pseudocódigo LaTeX
+  \begin{minipage}{8cm}
+    \centering
+    \small
+    \begin{verbatim}
+    [PROJETO LATEX ABNT]
+    |
+    +-- styles.sty (Estilo centralizado)
+    +-- metadata.tex (Metadados da obra)
+    |
+    +-- paginas/
+        +-- 1_externa/ (Capa)
+        +-- 2_pre_textuais/ (Resumos, Listas)
+        +-- 3_textuais/ (Corpo do Texto)
+        +-- 4_pos_textuais/ (Referências)
+    \end{verbatim}
+  \end{minipage}
+  
+  % Fonte obrigatória na base do elemento
+  \fonte{O Autor (2026).}
+\end{figure}
+
+% ==============================================================================
+% DEMONSTRAÇÃO DE TABELA (PADRÃO IBGE)
+% ==============================================================================
+\section{Tabelas no Padrão IBGE}
+
+Tabelas científicas seguem a padronização estabelecida pelas normas de tabulação do Instituto Brasileiro de Geografia e Estatística (IBGE). Ao contrário dos quadros, as tabelas não devem possuir linhas verticais fechando as laterais, e seu interior é formatado com linhas horizontais discretas.
+
+A Tabela \ref{tab:margens_abnt} ilustra o resumo das configurações de margem do documento.
+
+\begin{table}[h!]
+  \centering
+  \caption{Especificações de Margem e Espaçamento ABNT}
+  \label{tab:margens_abnt}
+  \begin{spacing}{1.0} % Espaçamento simples para o conteúdo de tabelas
+    \begin{tabular}{l c c}
+      \hline
+      \textbf{Elemento} & \textbf{Medida / Estilo} & \textbf{Diretriz Associada} \\
+      \hline
+      Margem Superior & 3 cm & NBR 14724 \\
+      Margem Esquerda & 3 cm & NBR 14724 \\
+      Margem Direita  & 2 cm & NBR 14724 \\
+      Margem Inferior & 2 cm & NBR 14724 \\
+      Espaçamento Geral & 1.5 entrelinhas & NBR 14724 \\
+      Recuo do Parágrafo & 1.25 cm & NBR 14724 \\
+      \hline
+    \end{tabular}
+  \end{spacing}
+  \fonte{Normas de Apresentação Tabular do IBGE (1993).}
+\end{table}

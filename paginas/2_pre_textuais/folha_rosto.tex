@@ -1,0 +1,44 @@
+%% paginas/2_pre_textuais/folha_rosto.tex
+%% Elemento Pré-Textual Obrigatório (Folha de Rosto) -- Conforme ABNT NBR 14724
+
+\begin{center}
+  
+  % 1. AUTOR (Caixa Alta)
+  {\large\MakeUppercase{\meuautor}}
+  
+  \vspace{4cm}
+  
+  % 2. TÍTULO E SUBTÍTULO
+  {\LARGE\bfseries\MakeUppercase{\meutitulo}}
+  
+  \ifdefempty{\meusubtitulo}{}{%
+    \vspace{0.5cm}
+    {\large\meusubtitulo} \\
+  }
+  
+  \vspace{2cm}
+  
+  % 3. NOTA DE APRESENTAÇÃO (Recuo de 4cm da margem esquerda, justificado, fonte 10, simples)
+  \begin{adjustwidth}{4cm}{0cm}
+    \begin{spacing}{1.0}
+      \small % Equivalente ao tamanho 10
+      \justify
+      \textopresentacao
+      
+      \vspace{0.5cm}
+      
+      % Orientador e Coorientador
+      {\noindent\textbf{\titulacaoorientador:} \meuorientador} \\
+      \ifdefempty{\meucoorientador}{}{%
+        {\noindent\textbf{\titulacaocoorientador:} \meucoorientador}
+      }
+    \end{spacing}
+  \end{adjustwidth}
+  
+  \vfill
+  
+  % 4. LOCAL E ANO
+  {\large\meulocal} \\
+  {\large\meuano}
+
+\end{center}

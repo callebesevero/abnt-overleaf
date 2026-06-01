@@ -1,0 +1,276 @@
+%% styles.sty
+%% Folha de estilos e configurações de formatação ABNT para trabalhos acadêmicos
+%% Em conformidade com as normas: NBR 14724, NBR 6023, NBR 10520, NBR 6024, NBR 6027, NBR 6028
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{styles}[2026/06/01 Modelo LaTeX Modular ABNT]
+
+% ==============================================================================
+% 1. PACOTES FUNDAMENTAIS E IDIOMA
+% ==============================================================================
+\RequirePackage[utf8]{inputenc}   % Suporte para acentuação direta (UTF-8)
+\RequirePackage[T1]{fontenc}      % Codificação de fonte moderna de 8 bits
+\RequirePackage[brazil]{babel}    % Tradução de termos e hifenação em português brasileiro
+\RequirePackage{etoolbox}         % Ferramentas para modificar macros internas do LaTeX
+
+% ==============================================================================
+% 2. MARGENS (Conforme ABNT NBR 14724)
+% ==============================================================================
+% Regra: Esquerda e Superior: 3cm | Direita e Inferior: 2cm
+\RequirePackage[top=3cm, left=3cm, right=2cm, bottom=2cm]{geometry}
+
+% ==============================================================================
+% 3. FONTES (Conforme ABNT NBR 14724)
+% ==============================================================================
+% Regra: Utilizar fonte Arial ou Times New Roman (tamanho 12 para texto geral,
+% 10 para citações longas, notas de rodapé, paginação e legendas).
+% Por padrão, usaremos a Times New Roman (pacote mathptmx).
+\RequirePackage{mathptmx} 
+
+% --- ALTERNATIVA ARIAL ---
+% Se sua instituição exigir fonte sem serifa (Arial), basta:
+% 1. Comentar o pacote mathptmx acima (\RequirePackage{mathptmx})
+% 2. Descomentar as duas linhas abaixo:
+% \RequirePackage{helvet}
+% \renewcommand{\familydefault}{\sfdefault}
+
+% ==============================================================================
+% 4. ESPAÇAMENTO E PARÁGRAFO (Conforme ABNT NBR 14724)
+% ==============================================================================
+\RequirePackage{setspace}
+\onehalfspacing                   % Espaçamento 1.5 entre as linhas para o corpo do texto
+\setlength{\parindent}{1.25cm}    % Recuo da primeira linha do parágrafo de 1.25cm
+\setlength{\parskip}{0pt}         % Sem espaço adicional entre parágrafos (apenas entrelinhas)
+
+% ==============================================================================
+% 5. CITAÇÃO DIRETA LONGA (Conforme ABNT NBR 10520)
+% ==============================================================================
+% Regra: Citações com mais de 3 linhas devem ter recuo de 4cm da margem esquerda,
+% fonte reduzida (tamanho 10), espaçamento simples e sem aspas.
+\RequirePackage{changepage}       % Permite ajustar as margens de um bloco de texto
+\newenvironment{citacaolonga}{%
+  \begin{adjustwidth}{4cm}{0cm}%  % Recuo de 4cm à esquerda, 0cm à direita
+  \small%                         % Fonte menor (equivale a 10pt)
+  \begin{spacing}{1.0}%           % Espaçamento simples
+  \noindent%                      % Sem recuo na primeira linha da citação
+  \ignorespaces%
+}{%
+  \end{spacing}%
+  \end{adjustwidth}%
+  \vspace{0.5em}%                 % Espaço vertical suave após a citação
+}
+
+% ==============================================================================
+% 6. PAGINAÇÃO E CABEÇALHOS (Conforme ABNT NBR 14724)
+% ==============================================================================
+% Regra: As páginas pré-textuais são contadas, mas não numeradas (sem número visível).
+% A numeração física só aparece a partir do início da parte textual (Introdução),
+% posicionada no canto superior direito, a 2cm do topo, em fonte menor (10pt).
+\RequirePackage{fancyhdr}
+
+% Estilo de página para a parte TEXTUAL (com número no canto superior direito)
+\fancypagestyle{textual}{
+  \fancyhf{}                                     % Limpa cabeçalho e rodapé
+  \fancyhead[R]{\small\thepage}                  % Imprime o número no cabeçalho à direita
+  \renewcommand{\headrulewidth}{0pt}             % Oculta a linha divisória do cabeçalho
+  \renewcommand{\footrulewidth}{0pt}             % Oculta a linha divisória do rodapé
+}
+
+% Estilo de página para a parte PRÉ-TEXTUAL (contada, mas oculta o número)
+\fancypagestyle{pretextual}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+% Comandos auxiliares para alternar entre os estados pré-textuais e textuais
+% Isso lida automaticamente com classes de documento que possuem ou não capítulos.
+\ifdef{\chapter}{
+  \newcommand{\configurarpretextual}{
+    \pagestyle{empty}                             % Oculta a paginação por padrão
+    \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{empty}}{}{} % Evita número na primeira página do capítulo
+  }
+  \newcommand{\configurartextual}{
+    \pagestyle{textual}                           % Ativa a paginação no canto superior direito
+    \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{textual}}{}{} % Mantém número na primeira página do capítulo
+  }
+}{
+  \newcommand{\configurarpretextual}{\pagestyle{empty}}
+  \newcommand{\configurartextual}{\pagestyle{textual}}
+}
+
+% ==============================================================================
+% 7. TÍTULOS DE SEÇÕES - NUMERAÇÃO PROGRESSIVA (Conforme ABNT NBR 6024)
+% ==============================================================================
+% Regra: Formatação hierárquica e alinhamento à margem esquerda.
+% Níveis recomendados:
+% 1 SEÇÃO PRIMÁRIA (Negrito e CAIXA ALTA)
+% 1.1 SEÇÃO SECUNDÁRIA (Sem negrito e CAIXA ALTA)
+% 1.1.1 Seção Terciária (Negrito e Caixa Baixa)
+% 1.1.1.1 Seção Quaternária (Itálico e Caixa Baixa)
+% 1.1.1.1.1 Seção Quinzenária (Sem destaques e Caixa Baixa)
+\RequirePackage{titlesec}
+
+\ifdef{\chapter}{
+  % Se a classe tiver capítulos (ex: report, book):
+  % 1. SEÇÃO PRIMÁRIA: Capítulo (\chapter)
+  \titleformat{\chapter}[hang]
+    {\normalfont\normalsize\bfseries}            % Fonte normal, tamanho 12, negrito
+    {\thechapter\ }                               % Número seguido de um espaço (sem ponto)
+    {0pt}                                         % Espaço entre número e título
+    {\MakeUppercase}                              % Aplica caixa alta ao título
+  \titlespacing*{\chapter}{0pt}{-20pt}{1.5em}    % Ajusta espaçamento vertical inicial
+}{
+  % Se a classe não tiver capítulos (ex: article):
+  % 1. SEÇÃO PRIMÁRIA: Seção (\section)
+  \titleformat{\section}[hang]
+    {\normalfont\normalsize\bfseries}
+    {\thesection\ }
+    {0pt}
+    {\MakeUppercase}
+  \titlespacing*{\section}{0pt}{1.5em}{1em}
+}
+
+% 2. SEÇÃO SECUNDÁRIA: Seção (\section) ou Subseção (\subsection)
+\ifdef{\chapter}{
+  \titleformat{\section}[hang]
+    {\normalfont\normalsize}                      % Sem negrito
+    {\thesection\ }
+    {0pt}
+    {\MakeUppercase}                              % Caixa Alta
+  \titlespacing*{\section}{0pt}{1.5em}{1em}
+}{
+  \titleformat{\subsection}[hang]
+    {\normalfont\normalsize}
+    {\thesubsection\ }
+    {0pt}
+    {\MakeUppercase}
+  \titlespacing*{\subsection}{0pt}{1.5em}{1em}
+}
+
+% 3. SEÇÃO TERCIÁRIA: Subseção (\subsection) ou Subsubseção (\subsubsection)
+\ifdef{\chapter}{
+  \titleformat{\subsection}[hang]
+    {\normalfont\normalsize\bfseries}            % Negrito
+    {\thesubsection\ }
+    {0pt}
+    {}                                            % Caixa Baixa (escrita normal)
+  \titlespacing*{\subsection}{0pt}{1.5em}{1em}
+}{
+  \titleformat{\subsubsection}[hang]
+    {\normalfont\normalsize\bfseries}
+    {\thesubsubsection\ }
+    {0pt}
+    {}
+  \titlespacing*{\subsubsection}{0pt}{1.5em}{1em}
+}
+
+% 4. SEÇÃO QUATERNÁRIA: Subsubseção (\subsubsection) ou Parágrafo (\paragraph)
+\ifdef{\chapter}{
+  \titleformat{\subsubsection}[hang]
+    {\normalfont\normalsize\itshape}              % Apenas Itálico
+    {\thesubsubsection\ }
+    {0pt}
+    {}
+  \titlespacing*{\subsubsection}{0pt}{1.5em}{1em}
+}{
+  \titleformat{\paragraph}[hang]
+    {\normalfont\normalsize\itshape}
+    {\theparagraph\ }
+    {0pt}
+    {}
+  \titlespacing*{\paragraph}{0pt}{1.5em}{1em}
+}
+
+% 5. SEÇÃO QUINZENÁRIA: Parágrafo (\paragraph) ou Subparágrafo (\subparagraph)
+\ifdef{\chapter}{
+  \titleformat{\paragraph}[hang]
+    {\normalfont\normalsize}                      % Normal/Sem destaque
+    {\theparagraph\ }
+    {0pt}
+    {}
+  \titlespacing*{\paragraph}{0pt}{1.5em}{1em}
+}{
+  \titleformat{\subparagraph}[hang]
+    {\normalfont\normalsize}
+    {\thesubparagraph\ }
+    {0pt}
+    {}
+  \titlespacing*{\subparagraph}{0pt}{1.5em}{1em}
+}
+
+% ==============================================================================
+% 8. SUMÁRIO (Conforme ABNT NBR 6027)
+% ==============================================================================
+% Regra: Os elementos pré-textuais não devem constar no Sumário. O sumário
+% deve apresentar a mesma tipografia e destaques dos títulos das seções.
+\RequirePackage{tocloft}
+
+% Remove negritos e formatações indesejadas do padrão LaTeX
+\renewcommand{\cftchapfont}{\normalfont\normalsize\bfseries}
+\renewcommand{\cftchappagefont}{\normalfont\normalsize\bfseries}
+
+\renewcommand{\cftsecfont}{\normalfont\normalsize}
+\renewcommand{\cftsecpagefont}{\normalfont\normalsize}
+
+\renewcommand{\cftsubsecfont}{\normalfont\normalsize\bfseries}
+\renewcommand{\cftsubsecpagefont}{\normalfont\normalsize\bfseries}
+
+\renewcommand{\cftsubsubsecfont}{\normalfont\normalsize\itshape}
+\renewcommand{\cftsubsubsecpagefont}{\normalfont\normalsize\itshape}
+
+% Adiciona pontilhados guias também para capítulos/seções primárias
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+% ==============================================================================
+% 9. LEGENDAS DE FIGURAS E TABELAS (Conforme ABNT NBR 14724)
+% ==============================================================================
+% Regra: Legendas de tabelas/ilustrações devem ser posicionadas na parte SUPERIOR.
+% A indicação da FONTE (mesmo que própria) deve constar na parte INFERIOR.
+% Ambas devem ter tamanho menor (10pt), espaçamento simples e centralizadas.
+\RequirePackage{caption}
+\captionsetup{
+  font={small},                   % Equivalente a tamanho 10pt
+  labelfont={bf},                 % Termo "Figura 1" ou "Tabela 1" em Negrito
+  labelsep=endash,                % Separador é o travessão (ex: Figura 1 – Legenda)
+  justification=centering,         % Centralizado
+  singlelinecheck=false,           % Permite centralizar mesmo linhas únicas
+  skip=6pt                        % Espaço vertical entre legenda e ilustração
+}
+
+% Comando customizado \fonte{} para aplicação correta de fontes sob figuras/tabelas
+\newcommand{\fonte}[1]{
+  \vspace{4pt}
+  \begin{spacing}{1.0}            % Espaçamento simples
+    \centering
+    \small{Fonte: #1}             % Letra menor (10pt) com prefixo "Fonte: "
+    \par
+  \end{spacing}
+}
+
+% ==============================================================================
+% 10. REQUISITOS PÓS-TEXTUAIS E MICRO-TIPOGRAFIA
+% ==============================================================================
+\RequirePackage{microtype}        % Melhora distribuição e quebra de linhas (evita "underfull/overfull")
+
+% Configuração hiperlinks de forma discreta para impressão acadêmica
+\RequirePackage{hyperref}
+\hypersetup{
+  colorlinks=true,                % Habilita cores nos links
+  linkcolor=black,                % Links de sumário/seções em preto
+  citecolor=black,                % Citações em preto
+  filecolor=black,
+  urlcolor=blue,                  % Links de internet em azul para destacar no digital
+  pdfdisplaydoctitle=true         % Exibe o título do documento em vez do nome do arquivo no leitor PDF
+}
+
+% Ajusta margem das referências bibliográficas padrão
+\let\oldbibliography\bibliography
+\renewcommand{\bibliography}[1]{
+  \begin{spacing}{1.0}            % Espaçamento simples (conforme NBR 6023)
+  \raggedright                    % Alinhamento exclusivo à esquerda (conforme NBR 6023)
+  \oldbibliography{#1}
+  \end{spacing}
+}
+
+\end{input}

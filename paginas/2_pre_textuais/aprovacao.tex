@@ -1,0 +1,79 @@
+%% paginas/2_pre_textuais/aprovacao.tex
+%% Elemento Pré-Textual Obrigatório (Folha de Aprovação) -- Conforme ABNT NBR 14724
+
+\begin{center}
+  
+  % 1. AUTOR (Caixa Alta)
+  {\large\MakeUppercase{\meuautor}}
+  
+  \vspace{1.5cm}
+  
+  % 2. TÍTULO E SUBTÍTULO
+  {\large\bfseries\MakeUppercase{\meutitulo}}
+  \ifdefempty{\meusubtitulo}{}{%
+    \vspace{0.2cm}
+    {\normalsize\meusubtitulo} \\
+  }
+  
+  \vspace{1.5cm}
+  
+  % 3. NOTA DE APRESENTAÇÃO
+  \begin{adjustwidth}{4cm}{0cm}
+    \begin{spacing}{1.0}
+      \small
+      \justify
+      \textopresentacao
+    \end{spacing}
+  \end{adjustwidth}
+  
+  \vspace{1cm}
+  
+  % 4. DATA DE APROVAÇÃO
+  \noindent
+  Aprovado em: \dataaprovacao
+  
+  \vspace{1.5cm}
+  
+  % 5. ASSINATURAS DA BANCA EXAMINADORA
+  \textbf{BANCA EXAMINADORA}
+  
+  \vspace{1.5cm}
+  
+  % Orientador
+  \begin{minipage}{10cm}
+    \centering
+    \rule{8cm}{0.4pt} \\ % Linha horizontal para assinatura
+    \begin{spacing}{1.0}
+      \small
+      \meuorientador\ -- \titulacaoorientador \\
+      \minhainstituicao
+    \end{spacing}
+  \end{minipage}
+  
+  \vfill
+  
+  % Membro 1
+  \begin{minipage}{10cm}
+    \centering
+    \rule{8cm}{0.4pt} \\
+    \begin{spacing}{1.0}
+      \small
+      \avaliadorum \\
+      \instituicaoavaliadorum
+    \end{spacing}
+  \end{minipage}
+  
+  \vfill
+  
+  % Membro 2
+  \begin{minipage}{10cm}
+    \centering
+    \rule{8cm}{0.4pt} \\
+    \begin{spacing}{1.0}
+      \small
+      \avaliadordois \\
+      \instituicaoavaliadordois
+    \end{spacing}
+  \end{minipage}
+
+\end{center}
