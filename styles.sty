@@ -202,25 +202,47 @@
 % ==============================================================================
 % 8. SUMÁRIO (Conforme ABNT NBR 6027)
 % ==============================================================================
-% Regra: Os elementos pré-textuais não devem constar no Sumário. O sumário
-% deve apresentar a mesma tipografia e destaques dos títulos das seções.
+% Regra: O título "SUMÁRIO" deve ser centralizado, negrito, caixa alta, 12pt.
+% Elementos pré-textuais NÃO devem constar no Sumário.
+% As entradas devem espelhar a tipografia dos títulos das seções no texto:
+%   Cap (Primária):    negrito + CAIXA ALTA
+%   Sec (Secundária):  sem negrito + CAIXA ALTA
+%   Subsec (Terciária): negrito + caixa baixa
+%   Subsubsec (Quaternária): itálico + caixa baixa
+% Todas com pontilhado guia até o número da página.
 \RequirePackage{tocloft}
 
-% Remove negritos e formatações indesejadas do padrão LaTeX
+% Nome do sumário conforme ABNT (sobrescreve o padrão do babel)
+\addto\captionsbrazil{%
+  \renewcommand{\contentsname}{SUM\'{A}RIO}%
+}
+
+% Título do Sumário: centralizado, negrito, 12pt
+\renewcommand{\cfttoctitlefont}{\hfil\normalfont\normalsize\bfseries}
+\renewcommand{\cftaftertoctitle}{\hfil}
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftbeforetoctitleskip}{0pt}
+
+% 1. Seção Primária (Capítulo): negrito + CAIXA ALTA
 \renewcommand{\cftchapfont}{\normalfont\normalsize\bfseries}
 \renewcommand{\cftchappagefont}{\normalfont\normalsize\bfseries}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}   % Pontilhado guia
+\setlength{\cftchapindent}{0pt}                           % Sem recuo
 
+% 2. Seção Secundária: sem negrito + CAIXA ALTA
 \renewcommand{\cftsecfont}{\normalfont\normalsize}
 \renewcommand{\cftsecpagefont}{\normalfont\normalsize}
+\setlength{\cftsecindent}{0pt}                             % Sem recuo
 
+% 3. Seção Terciária (Subseção): negrito + caixa baixa
 \renewcommand{\cftsubsecfont}{\normalfont\normalsize\bfseries}
 \renewcommand{\cftsubsecpagefont}{\normalfont\normalsize\bfseries}
+\setlength{\cftsubsecindent}{0pt}                          % Sem recuo
 
+% 4. Seção Quaternária (Subsubseção): itálico + caixa baixa
 \renewcommand{\cftsubsubsecfont}{\normalfont\normalsize\itshape}
 \renewcommand{\cftsubsubsecpagefont}{\normalfont\normalsize\itshape}
-
-% Adiciona pontilhados guias também para capítulos/seções primárias
-\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftsubsubsecindent}{0pt}                       % Sem recuo
 
 % ==============================================================================
 % 9. LISTAS DE ILUSTRAÇÕES E TABELAS (Conforme ABNT NBR 14724)
@@ -235,13 +257,13 @@
 }
 
 % Título da Lista de Ilustrações: centralizado, negrito, 12pt
-\renewcommand{\cftloftitlefont}{\hfill\normalfont\normalsize\bfseries}
-\renewcommand{\cftafterloftitle}{\hfill}
+\renewcommand{\cftloftitlefont}{\centering\normalfont\normalsize\bfseries}
+\renewcommand{\cftafterloftitle}{}
 \setlength{\cftbeforeloftitleskip}{0pt}
 
 % Título da Lista de Tabelas: centralizado, negrito, 12pt
-\renewcommand{\cftlottitlefont}{\hfill\normalfont\normalsize\bfseries}
-\renewcommand{\cftafterlottitle}{\hfill}
+\renewcommand{\cftlottitlefont}{\centering\normalfont\normalsize\bfseries}
+\renewcommand{\cftafterlottitle}{}
 \setlength{\cftbeforelottitleskip}{0pt}
 
 % Entradas na Lista de Ilustrações: "Figura X – Título ......... pág"
