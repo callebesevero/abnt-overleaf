@@ -29,27 +29,35 @@
 \setcounter{page}{1}
 
 % 2. Folha de Rosto (Obrigatório)
+\clearpage
 \input{paginas/2_pre_textuais/folha_rosto.tex}
 
 % 3. Errata (Opcional - Ative se houver correções)
+% \clearpage
 % \input{paginas/2_pre_textuais/errata.tex}
 
 % 4. Folha de Aprovação (Obrigatório)
+\clearpage
 \input{paginas/2_pre_textuais/aprovacao.tex}
 
 % 5. Dedicatória (Opcional)
+\clearpage
 \input{paginas/2_pre_textuais/dedicatoria.tex}
 
 % 6. Agradecimentos (Opcional)
+\clearpage
 \input{paginas/2_pre_textuais/agradecimentos.tex}
 
 % 7. Epígrafe (Opcional)
+\clearpage
 \input{paginas/2_pre_textuais/epigrafe.tex}
 
 % 8. Resumo em Português (Obrigatório)
+\clearpage
 \input{paginas/2_pre_textuais/resumo.tex}
 
 % 9. Abstract/Resumo em Inglês (Obrigatório)
+\clearpage
 \input{paginas/2_pre_textuais/abstract.tex}
 
 % 10. Lista de Ilustrações / Figuras (Opcional)
@@ -63,9 +71,11 @@
 \listoftables
 
 % 12. Lista de Abreviaturas e Siglas (Opcional)
+\clearpage
 \input{paginas/2_pre_textuais/siglas.tex}
 
 % 13. Lista de Símbolos (Opcional)
+% \clearpage
 % \input{paginas/2_pre_textuais/simbolos.tex}
 
 % 14. Sumário (Obrigatório, marca o fim da parte pré-textual)
@@ -91,19 +101,21 @@
 % ------------------------------------------------------------------------------
 % C) ELEMENTOS PÓS-TEXTUAIS (Referências, Apêndices, Anexos, etc.)
 % ------------------------------------------------------------------------------
-\clearpage
 
 % 1. Referências Bibliográficas (Obrigatório - Gerido por BibTeX)
 % Adiciona ao Sumário de forma limpa
+\clearpage
 \phantomsection
 \addcontentsline{toc}{chapter}{REFERÊNCIAS}
 \bibliographystyle{abntex2-alf} % Estilo de referências ABNT clássico
 \bibliography{referencias.bib}  % Importa o arquivo de banco de dados referencias.bib
 
 % 2. Glossário (Opcional)
+% \clearpage
 % \input{paginas/4_pos_textuais/glossario.tex}
 
 % 3. Apêndices (Opcional)
+\clearpage
 \ifdef{\appendix}{
   \clearpage
   \appendix
@@ -111,9 +123,11 @@
 }{}
 
 % 4. Anexos (Opcional)
+% \clearpage
 % \input{paginas/4_pos_textuais/anexos.tex}
 
 % 5. Índice Remissivo (Opcional)
+% \clearpage
 % \input{paginas/4_pos_textuais/indice.tex}
 
 \end{document}
