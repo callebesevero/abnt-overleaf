@@ -223,7 +223,47 @@
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
 
 % ==============================================================================
-% 9. LEGENDAS DE FIGURAS E TABELAS (Conforme ABNT NBR 14724)
+% 9. LISTAS DE ILUSTRAÇÕES E TABELAS (Conforme ABNT NBR 14724)
+% ==============================================================================
+% Regra: Título centralizado, negrito, caixa alta, 12pt.
+% Entradas: designação + travessão + título + pontilhado + página.
+
+% Nomes padronizados conforme ABNT (sobrescreve os padrões do babel)
+\addto\captionsbrazil{%
+  \renewcommand{\listfigurename}{LISTA DE ILUSTRAÇÕES}%
+  \renewcommand{\listtablename}{LISTA DE TABELAS}%
+}
+
+% Título da Lista de Ilustrações: centralizado, negrito, 12pt
+\renewcommand{\cftloftitlefont}{\hfill\normalfont\normalsize\bfseries}
+\renewcommand{\cftafterloftitle}{\hfill}
+\setlength{\cftbeforeloftitleskip}{0pt}
+
+% Título da Lista de Tabelas: centralizado, negrito, 12pt
+\renewcommand{\cftlottitlefont}{\hfill\normalfont\normalsize\bfseries}
+\renewcommand{\cftafterlottitle}{\hfill}
+\setlength{\cftbeforelottitleskip}{0pt}
+
+% Entradas na Lista de Ilustrações: "Figura X – Título ......... pág"
+\setlength{\cftfigindent}{0pt}                          % Sem recuo
+\renewcommand{\cftfigpresnum}{\figurename\space}        % Prefixo "Figura "
+\renewcommand{\cftfigaftersnum}{\space--\space}          % Travessão após o número
+\setlength{\cftfignumwidth}{7.5em}                       % Largura para "Figura XX -- "
+\renewcommand{\cftfigfont}{\normalfont\normalsize}       % Fonte 12pt normal
+\renewcommand{\cftfigpagefont}{\normalfont\normalsize}   % Página 12pt normal
+\renewcommand{\cftfigleader}{\cftdotfill{\cftdotsep}}   % Pontilhado guia
+
+% Entradas na Lista de Tabelas: "Tabela X – Título ......... pág"
+\setlength{\cfttabindent}{0pt}                           % Sem recuo
+\renewcommand{\cfttabpresnum}{\tablename\space}          % Prefixo "Tabela "
+\renewcommand{\cfttabaftersnum}{\space--\space}           % Travessão após o número
+\setlength{\cfttabnumwidth}{7.5em}                        % Largura para "Tabela XX -- "
+\renewcommand{\cfttabfont}{\normalfont\normalsize}        % Fonte 12pt normal
+\renewcommand{\cfttabpagefont}{\normalfont\normalsize}    % Página 12pt normal
+\renewcommand{\cfttableader}{\cftdotfill{\cftdotsep}}    % Pontilhado guia
+
+% ==============================================================================
+% 10. LEGENDAS DE FIGURAS E TABELAS (Conforme ABNT NBR 14724)
 % ==============================================================================
 % Regra: Legendas de tabelas/ilustrações devem ser posicionadas na parte SUPERIOR.
 % A indicação da FONTE (mesmo que própria) deve constar na parte INFERIOR.
@@ -249,7 +289,7 @@
 }
 
 % ==============================================================================
-% 10. REQUISITOS PÓS-TEXTUAIS E MICRO-TIPOGRAFIA
+% 11. REQUISITOS PÓS-TEXTUAIS E MICRO-TIPOGRAFIA
 % ==============================================================================
 \RequirePackage{microtype}        % Melhora distribuição e quebra de linhas (evita "underfull/overfull")
 
@@ -273,4 +313,4 @@
   \end{spacing}
 }
 
-\end{input}
+\endinput
