@@ -12,7 +12,7 @@
     }
     {\MakeUppercase{\meucurso}}
     
-    \vspace{4cm} % Espaço vertical proporcional
+    \vspace{3cm} % Espaço vertical proporcional
     
     % 2. AUTOR (Caixa Alta, sem negrito)
     {\MakeUppercase{\meuautor}}
@@ -20,18 +20,15 @@
     \vfill % Distribuição vertical flexível
     
     % 3. TÍTULO (Caixa Alta e Negrito)
-    {\bfseries\MakeUppercase{\meutitulo}}
-    
+    {\bfseries\MakeUppercase{\meutitulo}%
     % Subtítulo (se houver, em caixa baixa/normal)
-    \ifdefempty{\meusubtitulo}{}{%
-      \vspace{0.5cm}
-      {\meusubtitulo} \\
+    \ifdefempty{\meusubtitulo}{}{: \meusubtitulo}
     }
     
-    \vfill
+    \vspace{10cm} % Limita o Título e Subtítulo para sempre ficarem no centro
     
     % 4. LOCAL E ANO (No rodapé)
-    {\meulocal} \\
+    {\MakeUppercase\meulocal} \\
     {\meuano}
     
   \end{center}

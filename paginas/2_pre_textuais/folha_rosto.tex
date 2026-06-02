@@ -6,23 +6,18 @@
   % 1. AUTOR (Caixa Alta)
   {\MakeUppercase{\meuautor}}
   
-  \vspace{4cm}
+  \vspace{9cm}
   
   % 2. TÍTULO E SUBTÍTULO
-  {\bfseries\MakeUppercase{\meutitulo}}
-  
-  \ifdefempty{\meusubtitulo}{}{%
-    \vspace{0.5cm}
-    {\meusubtitulo} \\
+  {\bfseries\MakeUppercase{\meutitulo}%
+  \ifdefempty{\meusubtitulo}{}{: \meusubtitulo}
   }
   
   \vspace{2cm}
   
   % 3. NOTA DE APRESENTAÇÃO (Recuo de 4cm da margem esquerda, justificado, fonte 10, simples)
-  \begin{adjustwidth}{4cm}{0cm}
+  \begin{adjustwidth}{7cm}{0cm}
     \begin{spacing}{1.0}
-      \small % Equivalente ao tamanho 10
-      \justify
       \textopresentacao
       
       \vspace{0.5cm}

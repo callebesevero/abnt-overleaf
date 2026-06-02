@@ -9,19 +9,15 @@
   \vspace{1.5cm}
   
   % 2. TÍTULO E SUBTÍTULO
-  {\bfseries\MakeUppercase{\meutitulo}}
-  \ifdefempty{\meusubtitulo}{}{%
-    \vspace{0.2cm}
-    {\normalsize\meusubtitulo} \\
+  {\bfseries\MakeUppercase{\meutitulo}%
+  \ifdefempty{\meusubtitulo}{}{: \meusubtitulo}
   }
   
   \vspace{1.5cm}
   
   % 3. NOTA DE APRESENTAÇÃO
-  \begin{adjustwidth}{4cm}{0cm}
+  \begin{adjustwidth}{7cm}{0cm}
     \begin{spacing}{1.0}
-      \small
-      \justify
       \textopresentacao
     \end{spacing}
   \end{adjustwidth}
