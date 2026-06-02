@@ -88,7 +88,6 @@
 \ifdef{\chapter}{
   \newcommand{\configurarpretextual}{
     \pagestyle{empty}                             % Oculta a paginação por padrão
-    \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{empty}}{}{} % Evita número na primeira página do capítulo
   }
   \newcommand{\configurartextual}{
     \pagestyle{textual}                           % Ativa a paginação no canto superior direito
