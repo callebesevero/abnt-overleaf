@@ -119,7 +119,7 @@
     {\thechapter\ }                               % Número seguido de um espaço (sem ponto)
     {0pt}                                         % Espaço entre número e título
     {\MakeUppercase}                              % Aplica caixa alta ao título
-  \titlespacing*{\chapter}{0pt}{-20pt}{1.5em}    % Ajusta espaçamento vertical inicial
+  \titlespacing{\chapter}{0pt}{-20pt}{1.5em}    % Ajusta espaçamento vertical inicial
 }{
   % Se a classe não tiver capítulos (ex: article):
   % 1. SEÇÃO PRIMÁRIA: Seção (\section)
@@ -128,7 +128,7 @@
     {\thesection\ }
     {0pt}
     {\MakeUppercase}
-  \titlespacing*{\section}{0pt}{1.5em}{1em}
+  \titlespacing{\section}{0pt}{1.5em}{1em}
 }
 
 % 2. SEÇÃO SECUNDÁRIA: Seção (\section) ou Subseção (\subsection)
@@ -138,14 +138,14 @@
     {\thesection\ }
     {0pt}
     {\MakeUppercase}                              % Caixa Alta
-  \titlespacing*{\section}{0pt}{1.5em}{1em}
+  \titlespacing{\section}{0pt}{1.5em}{1em}
 }{
   \titleformat{\subsection}[hang]
     {\normalfont\normalsize}
     {\thesubsection\ }
     {0pt}
     {\MakeUppercase}
-  \titlespacing*{\subsection}{0pt}{1.5em}{1em}
+  \titlespacing{\subsection}{0pt}{1.5em}{1em}
 }
 
 % 3. SEÇÃO TERCIÁRIA: Subseção (\subsection) ou Subsubseção (\subsubsection)
@@ -155,14 +155,14 @@
     {\thesubsection\ }
     {0pt}
     {}                                            % Caixa Baixa (escrita normal)
-  \titlespacing*{\subsection}{0pt}{1.5em}{1em}
+  \titlespacing{\subsection}{0pt}{1.5em}{1em}
 }{
   \titleformat{\subsubsection}[hang]
     {\normalfont\normalsize\bfseries}
     {\thesubsubsection\ }
     {0pt}
     {}
-  \titlespacing*{\subsubsection}{0pt}{1.5em}{1em}
+  \titlespacing{\subsubsection}{0pt}{1.5em}{1em}
 }
 
 % 4. SEÇÃO QUATERNÁRIA: Subsubseção (\subsubsection) ou Parágrafo (\paragraph)
@@ -172,14 +172,14 @@
     {\thesubsubsection\ }
     {0pt}
     {}
-  \titlespacing*{\subsubsection}{0pt}{1.5em}{1em}
+  \titlespacing{\subsubsection}{0pt}{1.5em}{1em}
 }{
   \titleformat{\paragraph}[hang]
     {\normalfont\normalsize\itshape}
     {\theparagraph\ }
     {0pt}
     {}
-  \titlespacing*{\paragraph}{0pt}{1.5em}{1em}
+  \titlespacing{\paragraph}{0pt}{1.5em}{1em}
 }
 
 % 5. SEÇÃO QUINZENÁRIA: Parágrafo (\paragraph) ou Subparágrafo (\subparagraph)
@@ -189,14 +189,14 @@
     {\theparagraph\ }
     {0pt}
     {}
-  \titlespacing*{\paragraph}{0pt}{1.5em}{1em}
+  \titlespacing{\paragraph}{0pt}{1.5em}{1em}
 }{
   \titleformat{\subparagraph}[hang]
     {\normalfont\normalsize}
     {\thesubparagraph\ }
     {0pt}
     {}
-  \titlespacing*{\subparagraph}{0pt}{1.5em}{1em}
+  \titlespacing{\subparagraph}{0pt}{1.5em}{1em}
 }
 
 % ==============================================================================
